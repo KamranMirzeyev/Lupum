@@ -1,0 +1,78 @@
+﻿@model List<Lupum.Models.Group>
+@{
+    ViewBag.Title = "Qruplar";
+}
+
+
+<div id="content_wrapper" class="card-overlay">
+    <div id="header_wrapper" class="header-md ecom-header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <header id="header">
+                        <h1>Qruplar</h1>
+                        <ol class="breadcrumb">
+                            <li><a href="@Url.Action("index","dashboard")">Panel</a></li>
+                            <li class="active">Qruplar</li>
+                        </ol>
+                    </header>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="content" class="container">
+        <div class="content-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <header class="card-heading ">
+                            <ul class="card-actions icons right-top">
+                                <li>
+                                    <a href="@Url.Action("create")" class="btn btn-primary">
+                                        <i class="zmdi zmdi-plus"></i>
+                                        <div class="ripple-container"></div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </header>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table customer-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Ad</th>
+                                            <th>İstifadəçilər</th>
+                                            <th>
+
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var grp in Model)
+                                        {
+                                            <tr>
+                                                <td>@grp.Name</td>
+                                                <td>@string.Join(", ",grp.Users.Select(u=>u.Fullname).ToArray())</td>
+                                                <td>
+                                                    <a href="@Url.Action("edit",new { id = grp.Id})" class="icon"><i class="zmdi zmdi-edit"></i></a>
+                                                    @if (grp.Users.Count == 0)
+                                                    {
+                                                        <a href="@Url.Action("delete",new { id = grp.Id})" class="icon delete"><i class="zmdi zmdi-delete"></i></a>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+

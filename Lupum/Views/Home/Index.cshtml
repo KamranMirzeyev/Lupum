@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Lupum İstifadəçi Girişi</title>
+    <link rel="stylesheet" href="~/Public/css/vendor.bundle.css">
+    <link rel="stylesheet" href="~/Public/css/app.bundle.css">
+    <link rel="stylesheet" href="~/Public/css/theme-a.css">
+</head>
+<body id="auth_wrapper">
+    <div id="login_wrapper">
+        <div class="logo">
+            <img src="~/Public/img/logo/logo-icon@2x.png" alt="logo" class="logo-img">
+        </div>
+        <div id="login_content">
+            <h1 class="login-title">
+                Hesabınıza daxil olun
+            </h1>
+            <div class="login-body">
+                <form action="@Url.Action("login","home")" method="post">
+                    <div class="form-group label-floating is-empty">
+                        <label class="control-label">E-poçt</label>
+                        <input type="email" name="Email" required class="form-control">
+                    </div>
+                    <div class="form-group label-floating is-empty">
+                        <label class="control-label">Şifrə</label>
+                        <input type="password" name="Password" required class="form-control">
+                    </div>
+                    <a href="javascript:void(0)"  data-toggle="register" class="forgot-pass pull-right">Şifrəni unutmusunuz mu?</a>
+                    <div class="checkbox inline-block">
+                        <label>
+                            <input type="checkbox" class="checkbox-inline" value="">
+                            Məni xatırla
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-info btn-block m-t-40">Daxil ol</button>
+                </form>
+            </div>
+            <div id="register_wrapper">
+                <ul class="card-actions icons right-top">
+                    <li>
+                        <a href="javascript:void(0)" data-toggle="register">
+                            <i class="zmdi zmdi-close"></i>
+                        </a>
+                    </li>
+                </ul>
+                <h1 class="login-title">
+                    Şifrə unutmuşam
+                </h1>
+                <div class="login-body">
+                    <form>
+                        <div class="form-group label-floating is-empty">
+                            <label class="control-label">E-poçt</label>
+                            <input type="email" name="Email" required class="form-control">
+                        </div>
+                        <a href="javascript:void(0)" class="btn btn-info btn-block m-t-40">Yeni şifrə tələb et</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Public/js/vendor.bundle.js"></script>
+    <script src="~/Public/js/app.bundle.js"></script>
+</body>
+</html>

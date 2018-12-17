@@ -1,0 +1,98 @@
+﻿@model Lupum.Models.Group
+@{
+    ViewBag.Title = "Yenilə";
+}
+
+<div id="content_wrapper" class="card-overlay">
+    <div id="header_wrapper" class="header-md">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12">
+                    <header id="header">
+                        <h1>Yeni Qrup</h1>
+                        <ol class="breadcrumb">
+                            <li><a href="@Url.Action("index","dashboard")">Panel</a></li>
+                            <li><a href="@Url.Action("index","groups")">Qruplar</a></li>
+                            <li class="active">Yenilə</li>
+                        </ol>
+                    </header>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="content" class="container-fluid">
+        <div class="content-body">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12">
+                    <div class="card p-b-20">
+                        <div class="card-body">
+                            <form class="form-horizontal" id="AddGroup" action="@Url.Action("create")" method="post">
+                                <div class="form-group is-empty">
+                                    <label for="name" class="col-md-2 control-label">Ad</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" name="Name" id="Name" required value="@Model.Name">
+                                    </div>
+                                </div>
+                                @foreach (var action in ViewBag.Actions)
+                                {
+                                    var role = Model.Roles.FirstOrDefault(r => r.ActionId == action.Id);
+
+                                    <div class="form-group is-empty action" data-id="@action.Id">
+                                        <label for="name" class="col-md-2 control-label">@action.Name</label>
+                                        <div class="col-md-2">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" @(role?.CanView==true?"checked":"") name="CanView" id="checkboxSuccess" value="true">
+                                                    Görmə
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" @(role?.CanAdd==true?"checked":"") name="CanAdd" id="checkboxSuccess" value="true">
+                                                    Əlavə etmə
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" @(role?.CanEdit==true?"checked":"") name="CanEdit" id="checkboxSuccess" value="true">
+                                                    Yeniləmə
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" @(role?.CanDelete==true?"checked":"") name="CanDelete" id="checkboxSuccess" value="true">
+                                                    Silmə
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" @(role?.OwnerData==true?"checked":"") name="OwnerData" id="checkboxSuccess" value="true">
+                                                    Öz Məlumatları
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                                <button type="submit" class="btn btn-primary">Əlavə et</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
